@@ -27,14 +27,14 @@ CGRect originalRect;
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-		self.highLightColor = [UIColor blueColor];
+		//self.highLightColor = [UIColor blueColor];
     }
     return self;
 }
 
 - (void)awakeFromNib
 {
-	self.highLightColor = [UIColor blueColor];
+	//self.highLightColor = [UIColor blueColor];
 }
 
 /*

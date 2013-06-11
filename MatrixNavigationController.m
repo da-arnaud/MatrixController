@@ -72,6 +72,7 @@
 {
 	//CGRect theFrame = viewController.view.frame;
 	//NSLog (@"rect of viewCOntroller %3.2f, %3.2f, %3.2f, %3.2f", theFrame.origin.x, theFrame.origin.y, theFrame.size.width, theFrame.size.height);
+	[self.navigationBar pushNavigationItem:viewController.navigationItem animated:YES];
 	[_stack addObject:viewController];
 	
 	
@@ -92,6 +93,7 @@
 	{
 		[topViewController.view removeFromSuperview];
 		[self.stack removeLastObject];
+		[self.navigationBar popNavigationItemAnimated:YES];
 	}
 }
 
@@ -142,6 +144,55 @@
 		
 		[self.navigationBar setItems:itemArray];
 		
+	}
+}
+
+
+-(void)makeDefaultNavigationItemsForViewController:(UIViewController*)viewController
+{
+	UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 35)];
+	titleView.font = [UIFont fontWithName:@"Helvetica" size:15];
+	titleView.textColor = [UIColor whiteColor];
+	titleView.backgroundColor = [UIColor clearColor];
+	titleView.text = viewController.title;
+	self.navigationItem.titleView = titleView;
+	
+	if (viewController.navigationItem.leftBarButtonItem)
+	{
+		self.navigationItem.leftBarButtonItem = viewController.navigationItem.leftBarButtonItem;
+	}
+	else
+	{
+		self.navigationItem.leftBarButtonItem = defaultBackButtonItem;
+	}
+	
+	if (viewController.navigationItem.rightBarButtonItem)
+	{
+		self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem;
+	}
+}
+
+-(void)makeDefaultNavigationItems2ForViewController:(UIViewController*)viewController
+{
+	UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 35)];
+	titleView.font = [UIFont fontWithName:@"Helvetica" size:15];
+	titleView.textColor = [UIColor whiteColor];
+	titleView.backgroundColor = [UIColor clearColor];
+	titleView.text = viewController.title;
+	self.navigationItem.titleView = titleView;
+	
+	if (viewController.navigationItem.leftBarButtonItem)
+	{
+		self.navigationItem.leftBarButtonItem = viewController.navigationItem.leftBarButtonItem;
+	}
+	else
+	{
+		self.navigationItem.leftBarButtonItem = defaultBackButtonItem;
+	}
+	
+	if (viewController.navigationItem.rightBarButtonItem)
+	{
+		self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem;
 	}
 }
 
