@@ -254,7 +254,7 @@ CGRect movingCellOriginalRect;
 
 -(void)selectCellAtPosition:(MatrixPosition*)position
 {
-	
+
 }
 
 -(CGFloat) defaultWidth
@@ -342,17 +342,20 @@ CGRect movingCellOriginalRect;
 		{
 			MatrixPosition* position = [MatrixPosition positionWithRow:r column:c];
 			MatrixCellView* cell = [self cellForPosition:position];
-			columnWidth = [self.delegate matrixView:self widthForColumn:c];
-			totalWidth += columnWidth;
-			
-			CGPoint origin = CGPointMake(c*columnWidth, r*rowHeight);
-			CGRect cellFrame = CGRectMake(origin.x, origin.y, cell.frame.size.width, cell.frame.size.height);
-			
-			[cell setFrame:cellFrame];
-			[cell setMatrixView:self];
-			[self setSeparatorForCell:cell];
-			[self addSubview:cell];
-			[cellArray addObject:cell];
+			if (cell)
+			{
+				columnWidth = [self.delegate matrixView:self widthForColumn:c];
+				totalWidth += columnWidth;
+				
+				CGPoint origin = CGPointMake(c*columnWidth, r*rowHeight);
+				CGRect cellFrame = CGRectMake(origin.x, origin.y, cell.frame.size.width, cell.frame.size.height);
+				
+				[cell setFrame:cellFrame];
+				[cell setMatrixView:self];
+				[self setSeparatorForCell:cell];
+				[self addSubview:cell];
+				[cellArray addObject:cell];
+			}
 			//[cell release];
 			
 			

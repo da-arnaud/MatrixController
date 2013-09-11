@@ -36,8 +36,8 @@
 
 
 @optional
--(NSUInteger)matrixView:(MatrixView*)numberOfColumnsForRow:(NSUInteger)row;
--(NSUInteger)matrixView:(MatrixView *)numberOfRowsForColumn:(NSUInteger)column;
+-(NSUInteger)matrixView:(MatrixView*)matrixView numberOfColumnsForRow:(NSUInteger)row;
+-(NSUInteger)matrixView:(MatrixView *)matrixView numberOfRowsForColumn:(NSUInteger)column;
 - (BOOL)matrixView:(MatrixView *)matrixView canEditCell:(MatrixCellView *)cell;
 - (BOOL)matrixView:(MatrixView *)matrixView canMoveCell:(MatrixCellView *)cell;
 - (BOOL)matrixView:(MatrixView *)matrixView canMoveCell:(MatrixCellView *)cell toPosition:(MatrixPosition*)position;
@@ -95,8 +95,8 @@ typedef enum
 @property (nonatomic, assign, readonly, getter = numberOfRows) NSUInteger rows;
 @property (nonatomic, assign, readonly, getter = numberOfColumns) NSUInteger columns;
 @property (nonatomic, assign) MatrixCellViewSeparatorStyle separatorStyle;
-@property(nonatomic, retain) UIColor *separatorColor;
-@property(nonatomic, getter=isEditing) BOOL editing;
+@property (nonatomic, retain) UIColor *separatorColor;
+@property (nonatomic, getter=isEditing) BOOL editing;
 @property (nonatomic, assign) CGRect activeDropZone;
 @property (nonatomic, assign) IBOutlet MatrixActiveView *activeView;
 @property (nonatomic, assign) BOOL showActiveView;
