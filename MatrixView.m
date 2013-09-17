@@ -768,6 +768,12 @@ CGRect movingCellOriginalRect;
 	movingCell = nil;
 }
 
-
+- (void)dealloc
+{
+	[self removeObserver:self forKeyPath:@"contentOffset"];
+	[self removeObserver:self forKeyPath:@"_touchInActiveZone"];
+	
+	[super dealloc];
+}
 
 @end
